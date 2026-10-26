@@ -1,19 +1,22 @@
 {
-  "name": "pi-purge",
-  "version": "0.2.3",
-  "description": "pi extension: switch a session between pi's stock system prompt, a trimmed variant, and a bundled or custom persona prompt - for prompt-engineering experiments",
+  "name": "omp-purge",
+  "version": "0.3.0",
+  "description": "omp (oh-my-pi) extension: switch a session between the stock system prompt, a trimmed variant, and a bundled or custom persona prompt - for prompt-engineering experiments. Also works in pi.",
   "type": "module",
   "license": "MIT",
   "author": "ZiChuanLan",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZiChuanLan/pi-purge.git"
+    "url": "git+https://github.com/kvxunz/omp-purge.git"
   },
-  "homepage": "https://github.com/ZiChuanLan/pi-purge#readme",
+  "homepage": "https://github.com/kvxunz/omp-purge#readme",
   "bugs": {
-    "url": "https://github.com/ZiChuanLan/pi-purge/issues"
+    "url": "https://github.com/kvxunz/omp-purge/issues"
   },
   "keywords": [
+    "omp",
+    "oh-my-pi",
+    "omp-extension",
     "pi-package",
     "pi-extension",
     "pi-coding-agent",
@@ -33,7 +36,7 @@
     "access": "public"
   },
   "scripts": {
-    "test": "node test/pi-purge.test.mjs && node test/pi-purge-env-source.test.mjs"
+    "test": "node test/omp-purge.test.mjs && node test/omp-purge-env-source.test.mjs && node test/omp-purge-env-legacy.test.mjs && node test/omp-purge-host.test.mjs"
   },
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": ">=0.80.0 <2"
@@ -48,7 +51,10 @@
   },
   "pi": {
     "extensions": [
-      "./extensions/pi-purge.ts"
+      "./extensions/omp-purge.ts"
     ]
-  }
+  },
+  "contributors": [
+    "kvxunz"
+  ]
 }

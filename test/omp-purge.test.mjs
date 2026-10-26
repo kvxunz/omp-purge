@@ -5,9 +5,10 @@ import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 
 // 0.2 起扩展不写任何状态文件；仍然隔离 agent dir，用来证明「跑完目录还是空的」
-const AGENT_DIR = mkdtempSync(join(tmpdir(), "pi-purge-test-"));
+const AGENT_DIR = mkdtempSync(join(tmpdir(), "omp-purge-test-"));
 process.env.PI_CODING_AGENT_DIR = AGENT_DIR;
-// 默认源在模块加载时求值：清掉 shell 里可能导出的 PI_PURGE_SOURCE，保证本套件跑内嵌源
+// 默认源在模块加载时求值：清掉 shell 里可能导出的 OMP_PURGE_SOURCE / PI_PURGE_SOURCE，保证本套件跑内嵌源
+delete process.env.OMP_PURGE_SOURCE;
 delete process.env.PI_PURGE_SOURCE;
 
 // pi dist/core/system-prompt.js buildSystemPrompt() 的真实输出形态
@@ -53,7 +54,7 @@ const pi = {
 	registerCommand: (name, options) => commands.set(name, options),
 };
 
-const mod = await import(pathToFileURL(join(import.meta.dirname, "..", "extensions", "pi-purge.ts")).href);
+const mod = await import(pathToFileURL(join(import.meta.dirname, "..", "extensions", "omp-purge.ts")).href);
 mod.default(pi);
 
 const ctx = {
